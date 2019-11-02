@@ -20,7 +20,6 @@ body {
 	width: 56px;
 	border-right: 1px solid #fff;
 	padding: 5px;
-	padding-top: 8px;
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 }
@@ -28,6 +27,15 @@ body {
     width: 20px;
     cursor: pointer;
     z-index: 999;
+}
+#showapps {
+	float:left; 
+	padding:14px 0px 10px 10px; 
+	color: #ddd;
+	cursor: pointer;
+}
+#appmenu {
+	min-height: 200px;
 }
 #sidelist {
 	background: #eee;
@@ -40,6 +48,7 @@ body {
 	position: absolute;
 	right: 0;
 	left: 0;
+	padding-right: 6px;
 	z-index: 1;
 }
 #grouplisttop_space {
@@ -48,7 +57,8 @@ body {
 }
 #grouplisttop i {
 	color: #fff;
-	padding: 10px;
+	padding: 10px 6px;
+	cursor: pointer;
 }
 #grouplist {
 	margin: 10px;
@@ -85,13 +95,24 @@ body .person__image { /* Applies when dragging out of scrollable grouplist */
 	font-size: 32px;
 }
 .iconcircle {
-    background-color: purple;
+    background-color: #ddd;
     border-radius: 24px;
     height: 42px;
     width: 42px;
     position: relative;
     border:1px solid #fff;
+    margin-top: 10px;
+    margin-bottom: 4px;
     cursor: pointer;
+}
+.showpeople.active {
+	background-color: purple;
+}
+.showlayers.active {
+	background-color: blue;
+}
+.showsettings.active {
+	background-color: green; /* #aaa; */
 }
 .iconcircle .material-icons, .topcircle .material-icons {
     color: #fff;

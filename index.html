@@ -43,7 +43,7 @@
 <body>
 
 	<div id="topnav">
-        <div style="float:left; padding:14px 0px 10px 10px; color: #ddd;">
+        <div id="showapps" style="display:none">
             <i class="material-icons" style="font-size: 42px">apps</i>
         </div>
         <div style="float:left; padding:20px">
@@ -57,12 +57,32 @@
     </div>
     <div style="height:70px"></div>
 
+    <div id="appmenu" style="display:none">
+        <div style="float:right">       
+            <i class="material-icons hideAppMenu">close</i>
+        </div>
+        <b>Welcome</b>  
+        You are viewing a demo app created by Loren Heyns 
+        to visualize individuals by their office locations.
+    </div>
+
     <div id="flexwrapper">
     	<div class="marker-menu" >
     		
-            <div class="iconcircle showpeople">
+            <div class="iconcircle showpeople active">
                 <i class="material-icons">people</i>
             </div>
+
+            <div class="iconcircle showlayers">
+                <i class="material-icons">layers</i>
+            </div>
+
+            <div class="iconcircle showsettings">
+                <i class="material-icons">settings</i>
+            </div>
+
+            
+
     	</div>
         <div id="sidelist" style="position:relative;display:none">
             <div id="grouplisttop">
@@ -72,7 +92,7 @@
                 <div style="float:right">
                     
                         <i class="material-icons">person_add</i>
-                   
+                
                 </div>
             </div>
             <div id="grouplisttop_space"></div>
@@ -109,8 +129,9 @@
 	<img src="img/centergy-12.jpg" style="max-width:1020px"><br>
 	-->
     <h1>Ponce City Market - 7th Floor</h1>
-	<img src="../neighborhood/atlanta/pcm/img/PCM-floorplan.jpg"><br>
-	
+    <div style="max-height:320px; overflow:hidden">
+	   <img src="../neighborhood/atlanta/pcm/img/PCM-floorplan.jpg"><br>
+	</div>
 
 <br><br>
 

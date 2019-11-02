@@ -98,5 +98,7 @@ $(document).ready( function() {
             $('#sidelist').show();
         }
     });
-
+	$('.hideAppMenu').click(function(event) {
+		$('#appmenu').hide();
+	});
 });
