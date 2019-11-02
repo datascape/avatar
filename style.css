@@ -1,22 +1,113 @@
 body {
 	margin: 0;
 }
+#topnav {
+	background-color: #fff;
+	width: 100%;
+	height: 70px;
+	
+	border-bottomX: 1px solid #ccc;
+	position: fixed;
+	z-index: 90000;
+}
 #map {
 	overflow: auto;
+	width:100%;
 	height: 500px;
 }
 .marker-menu {
-	background: #eee;
-	width: 50px;
-	height: 300px;
-	border: 1px solid #fff;
-	float: left;
+	background: #FBFBFB;
+	width: 56px;
+	border-right: 1px solid #fff;
+	padding: 5px;
+	padding-top: 8px;
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 }
 .draggable-marker {
     width: 20px;
-    margin: 12px;
     cursor: pointer;
-    z-index: 2;
+    z-index: 999;
 }
+#sidelist {
+	background: #eee;
+	width:40%;
+	height: 500px;
+	overflow: scroll;
+}
+#grouplisttop {
+	background-color: #bbb;
+	position: absolute;
+	right: 0;
+	left: 0;
+	z-index: 1;
+}
+#grouplisttop_space {
+	height: 30px;
+	margin-bottom: 18px;
+}
+#grouplisttop i {
+	color: #fff;
+	padding: 10px;
+}
+#grouplist {
+	margin: 10px;
+}
+
+#grouplist .person__image {
+    width: 64px;
+    height: 64px;
+    margin-top: 10px;
+}
+body .person__image { /* Applies when dragging out of scrollable grouplist */
+	margin-top: 10px;
+	width: 32px;
+    height: 32px;
+	z-index: 999999;
+	transition: none;
+}
+#grouplist .person__meta {
+	background-color: rgba(255,255,255,.5);
+	z-index: 99999;
+	overflow: auto;
+}
+.topcircle {
+    background-color: #ddd;
+    border-radius: 27px;
+    height: 54px;
+    width: 54px;
+    position: relative;
+    border:1px solid #fff;
+    margin:10px;
+    cursor: pointer;
+}
+.topcircle .material-icons {
+	font-size: 32px;
+}
+.iconcircle {
+    background-color: purple;
+    border-radius: 24px;
+    height: 42px;
+    width: 42px;
+    position: relative;
+    border:1px solid #fff;
+    cursor: pointer;
+}
+.iconcircle .material-icons, .topcircle .material-icons {
+    color: #fff;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#flexwrapper {
+	border-top: 1px solid #ccc;
+	box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 200;
+}
+
+

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
 <head>
 	<!--
 		Drag to map
@@ -36,19 +36,52 @@
 		    margin-block-start: 0em;
 		    font-size: 2em;
 		}
+        
 	</style>
 </head>
 
 <body>
 
-	<!-- Placing item above map causes marher to jump down when dropped. -->
+	<div id="topnav">
+        <div style="float:left; padding:14px 0px 10px 10px; color: #ddd;">
+            <i class="material-icons" style="font-size: 42px">apps</i>
+        </div>
+        <div style="float:left; padding:20px">
+            <h1>Office Map</h1>
+        </div>
+        <div style="float:right">
+            <div class="topcircle showaccount">
+                <i class="material-icons">person</i>
+            </div>
+        </div>
+    </div>
+    <div style="height:70px"></div>
 
-	<div class="marker-menu" >
-		<img class="draggable-marker" src="img/marker-icon.png" alt="marker" />
-		<img class="draggable-marker" src="img/marker-icon.png" alt="marker" />	
-	</div>
-	<div id="map"></div>
+    <div id="flexwrapper">
+    	<div class="marker-menu" >
+    		
+            <div class="iconcircle showpeople">
+                <i class="material-icons">people</i>
+            </div>
+    	</div>
+        <div id="sidelist" style="position:relative;display:none">
+            <div id="grouplisttop">
+                <div style="float:left; padding:10px; color:#fff">
+                    Airbus Aerial
+                </div>
+                <div style="float:right">
+                    
+                        <i class="material-icons">person_add</i>
+                   
+                </div>
+            </div>
+            <div id="grouplisttop_space"></div>
+            <div id="grouplist"></div>
+        </div>
+    	<div id="map"></div>
+    </div>
 
+    <!-- zepto doesn't support draggable -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
 	
@@ -59,257 +92,281 @@
   integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
   crossorigin=""></script>
 
-	<script src="script.js"></script>
+  <script>
+    $(document).ready( function() {
+        //$('#sidelist').show();
+        //$('#grouplist').html($('#teamtext').val());
+    });
+  </script>
+
+	<script src="js/script.js"></script>
 
 <br>
 <div style="margin:0 auto; max-width: 1020px">
-	<h1>Map your office</h1>
-	<img src="img/centergy-12.jpg" style="max-width:1020px"><br>
+    <img class="draggable-marker" style="float:left; margin-right:5px; margin-top:-5px" src="img/marker-icon.png" alt="marker" />
 	<!--
-	<img src="../neighborhood/atlanta/pcm/img/PCM-floorplan.jpg"><br>
+    <h1>Map your office</h1>
+	<img src="img/centergy-12.jpg" style="max-width:1020px"><br>
 	-->
+    <h1>Ponce City Market - 7th Floor</h1>
+	<img src="../neighborhood/atlanta/pcm/img/PCM-floorplan.jpg"><br>
+	
+
+<br><br>
+
+
+
+<textarea id="teamtext" style="width:100%; height:500px">
+<div class="person-wrapper">
+<div class="person">
+    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2017/08/3J4A0806-1-crop-edit.jpg);"></div>
+    <div class="person__meta">
+        <p class="person__name">Jesse Kallman</p>
+        <h6 class="person__title">President</h6>
+    </div>
+</div>
+            <div class="person">
+    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2019/03/nickwayne.thumbnail.jpg);"></div>
+    <div class="person__meta">
+        <p class="person__name">Nick Wayne</p>
+        <h6 class="person__title">Director Business Development</h6>
+    </div>
+</div>
+            <div class="person">
+    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2019/07/matt.workman.IMG_1092.jpg);"></div>
+    <div class="person__meta">
+        <p class="person__name">Matt Workman</p>
+        <h6 class="person__title">Director of Sales / Insurance Industry Leader</h6>
+    </div>
+</div>
+            <div class="person">
+    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2017/08/team_photos-madhav-cropped-1.jpg);"></div>
+    <div class="person__meta">
+        <p class="person__name">Madhav Desetty</p>
+        <h6 class="person__title">Chief Software Architect</h6>
+    </div>
+</div>
+            <div class="person">
+    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2017/08/ABA-Headshot-10.jpg);"></div>
+    <div class="person__meta">
+        <p class="person__name">Jay Dellinger</p>
+        <h6 class="person__title">Software Engineering Manager</h6>
+    </div>
+</div>
+            <div class="person">
+    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2018/07/IMG_9664.jpg);"></div>
+    <div class="person__meta">
+        <p class="person__name">Justin Byrd</p>
+        <h6 class="person__title">Sales Solution Executive</h6>
+    </div>
+</div>
+            <div class="person">
+    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2019/08/IMG_2622.sof_.thumbnail.jpg);"></div>
+    <div class="person__meta">
+        <p class="person__name">Sofonias Yelma</p>
+        <h6 class="person__title">Business Development Representative</h6>
+    </div>
+</div>
+            <div class="person">
+    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2019/01/IMG_1033.jpg);"></div>
+    <div class="person__meta">
+        <p class="person__name">Dawn McGreevey</p>
+        <h6 class="person__title">Marketing Director</h6>
+    </div>
+</div>
+            <div class="person">
+    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2017/12/IMG_6601.jpg);"></div>
+    <div class="person__meta">
+        <p class="person__name">Ryan Anderson</p>
+        <h6 class="person__title">Product Manager</h6>
+    </div>
+</div>
+            <div class="person">
+    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2018/06/IMG_E2952.jpg);"></div>
+    <div class="person__meta">
+        <p class="person__name">Cooper Linn</p>
+        <h6 class="person__title">Assistant Product Manager</h6>
+    </div>
+</div>
+            <div class="person">
+    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2019/07/manuhar.thumbnail.IMG_2609.jpg);"></div>
+    <div class="person__meta">
+        <p class="person__name">Manuhar Chopra</p>
+        <h6 class="person__title">Finance</h6>
+    </div>
+</div>
+            <div class="person">
+    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2019/07/juan.thumbnail.jpg);"></div>
+    <div class="person__meta">
+        <p class="person__name">Juan Jimenez</p>
+        <h6 class="person__title">Manager - Procurement and Operations</h6>
+    </div>
+</div>
+            <div class="person">
+    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2017/12/IMG_6595.jpg);"></div>
+    <div class="person__meta">
+        <p class="person__name">April Johnson</p>
+        <h6 class="person__title">National Recruiting Business Partner</h6>
+    </div>
+</div>
+            <div class="person">
+    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2017/08/ABA-Headshot-04.jpg);"></div>
+    <div class="person__meta">
+        <p class="person__name">Brad Mandala</p>
+        <h6 class="person__title">Director of Flight Operations</h6>
+    </div>
+</div>
+            <div class="person">
+    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2017/08/ABA-Headshot-02.jpg);"></div>
+    <div class="person__meta">
+        <p class="person__name">Craig Beese</p>
+        <h6 class="person__title">Senior Project Manager</h6>
+    </div>
+</div>
+            <div class="person">
+    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2017/08/ABA-Headshot-08.jpg);"></div>
+    <div class="person__meta">
+        <p class="person__name">Shannon Allen</p>
+        <h6 class="person__title">Manager - Business Operations</h6>
+    </div>
+</div>
+            <div class="person">
+    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2017/08/ABA-Headshot-11.jpg);"></div>
+    <div class="person__meta">
+        <p class="person__name">Samantha Prince</p>
+        <h6 class="person__title">Product Designer</h6>
+    </div>
+</div>
+            <div class="person">
+    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2019/01/IMG_1037.jpg);"></div>
+    <div class="person__meta">
+        <p class="person__name">Dexter Ferguson</p>
+        <h6 class="person__title">Product Designer</h6>
+    </div>
+</div>
+            <div class="person">
+    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2017/08/ABA-Headshot-03.jpg);"></div>
+    <div class="person__meta">
+        <p class="person__name">Sidney Collins</p>
+        <h6 class="person__title">Senior Front-End Software Engineer &amp; Head of Culture</h6>
+    </div>
+</div>
+            <div class="person">
+    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2017/12/IMG_6589-2.jpg);"></div>
+    <div class="person__meta">
+        <p class="person__name">Terri Chu</p>
+        <h6 class="person__title">Senior Software Engineer</h6>
+    </div>
+</div>
+            <div class="person">
+    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2017/12/IMG_6598.jpg);"></div>
+    <div class="person__meta">
+        <p class="person__name">Nick Keller</p>
+        <h6 class="person__title">Software Engineer</h6>
+    </div>
+</div>
+            <div class="person">
+    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2018/02/IMG_3846-e1518129212419.jpg);"></div>
+    <div class="person__meta">
+        <p class="person__name">Kyle Plaugher</p>
+        <h6 class="person__title">Front-End Web Developer</h6>
+    </div>
+</div>
+            <div class="person">
+    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2018/02/IMG_8359-2-e1518129291472.jpg);"></div>
+    <div class="person__meta">
+        <p class="person__name">Eric Sherouse</p>
+        <h6 class="person__title">Senior Front-End 3D Developer</h6>
+    </div>
+</div>
+            <div class="person">
+    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2018/09/IMG_0506.jpg);"></div>
+    <div class="person__meta">
+        <p class="person__name">Brent Lewis</p>
+        <h6 class="person__title">Senior Front-End 3D Developer</h6>
+    </div>
+</div>
+            <div class="person">
+    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2019/01/IMG_1034.jpg);"></div>
+    <div class="person__meta">
+        <p class="person__name">Jennifer Schiavone</p>
+        <h6 class="person__title">Software Development Engineer in Test</h6>
+    </div>
+</div>
+            <div class="person">
+    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2018/07/IMG_9669.jpg);"></div>
+    <div class="person__meta">
+        <p class="person__name">Frank Obusek</p>
+        <h6 class="person__title">Geospatial Engineer</h6>
+    </div>
+</div>
+            <div class="person">
+    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2018/04/IMG_8431-1.jpg);"></div>
+    <div class="person__meta">
+        <p class="person__name">Miguel Serrano, PhD.</p>
+        <h6 class="person__title">Computer Vision &amp; Machine Learning Engineer</h6>
+    </div>
+</div>
+            <div class="person">
+    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2018/05/IMG_9465.jpg);"></div>
+    <div class="person__meta">
+        <p class="person__name">Yazeed Alaudah</p>
+        <h6 class="person__title">Machine Learning Engineer</h6>
+    </div>
+</div>
+            <div class="person">
+    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2018/06/ValarieHeadshot.jpg);"></div>
+    <div class="person__meta">
+        <p class="person__name">Valarie Regas</p>
+        <h6 class="person__title">Jr. DevOps Engineer</h6>
+    </div>
+</div>
+            <div class="person">
+    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2018/06/RobHeadshot.jpg);"></div>
+    <div class="person__meta">
+        <p class="person__name">Rob Gilliom</p>
+        <h6 class="person__title">Sr. Full Stack Software Engineer</h6>
+    </div>
+</div>
+            <div class="person">
+    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2018/07/IMG_9765.jpg);"></div>
+    <div class="person__meta">
+        <p class="person__name">Mike Mommsen</p>
+        <h6 class="person__title">Backend Software Engineer</h6>
+    </div>
+</div>
+            <div class="person">
+    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2017/08/ABA-Headshot-06.jpg);"></div>
+    <div class="person__meta">
+        <p class="person__name">Jared Salzmann</p>
+        <h6 class="person__title">Senior Operations &amp; Automation Engineer</h6>
+    </div>
+</div>
+            <div class="person">
+    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2019/04/laura.IMG_1702.thumb_.3.jpg);"></div>
+    <div class="person__meta">
+        <p class="person__name">Laura Chapman</p>
+        <h6 class="person__title">Receptionist</h6>
+    </div>
+</div>
+</div>
+</textarea>
+
 </div>
 <br><br>
 
-	<!--
-		<div class="person-wrapper">
-                <div class="person">
-                    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2017/08/3J4A0806-1-crop-edit.jpg);"></div>
-                    <div class="person__meta">
-                        <p class="person__name">Jesse Kallman</p>
-                        <h6 class="person__title">President</h6>
-                    </div>
-                </div>
-                            <div class="person">
-                    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2019/03/nickwayne.thumbnail.jpg);"></div>
-                    <div class="person__meta">
-                        <p class="person__name">Nick Wayne</p>
-                        <h6 class="person__title">Director Business Development</h6>
-                    </div>
-                </div>
-                            <div class="person">
-                    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2019/07/matt.workman.IMG_1092.jpg);"></div>
-                    <div class="person__meta">
-                        <p class="person__name">Matt Workman</p>
-                        <h6 class="person__title">Director of Sales / Insurance Industry Leader</h6>
-                    </div>
-                </div>
-                            <div class="person">
-                    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2017/08/team_photos-madhav-cropped-1.jpg);"></div>
-                    <div class="person__meta">
-                        <p class="person__name">Madhav Desetty</p>
-                        <h6 class="person__title">Chief Software Architect</h6>
-                    </div>
-                </div>
-                            <div class="person">
-                    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2017/08/ABA-Headshot-10.jpg);"></div>
-                    <div class="person__meta">
-                        <p class="person__name">Jay Dellinger</p>
-                        <h6 class="person__title">Software Engineering Manager</h6>
-                    </div>
-                </div>
-                            <div class="person">
-                    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2018/07/IMG_9664.jpg);"></div>
-                    <div class="person__meta">
-                        <p class="person__name">Justin Byrd</p>
-                        <h6 class="person__title">Sales Solution Executive</h6>
-                    </div>
-                </div>
-                            <div class="person">
-                    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2019/08/IMG_2622.sof_.thumbnail.jpg);"></div>
-                    <div class="person__meta">
-                        <p class="person__name">Sofonias Yelma</p>
-                        <h6 class="person__title">Business Development Representative</h6>
-                    </div>
-                </div>
-                            <div class="person">
-                    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2019/01/IMG_1033.jpg);"></div>
-                    <div class="person__meta">
-                        <p class="person__name">Dawn McGreevey</p>
-                        <h6 class="person__title">Marketing Director</h6>
-                    </div>
-                </div>
-                            <div class="person">
-                    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2017/12/IMG_6601.jpg);"></div>
-                    <div class="person__meta">
-                        <p class="person__name">Ryan Anderson</p>
-                        <h6 class="person__title">Product Manager</h6>
-                    </div>
-                </div>
-                            <div class="person">
-                    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2018/06/IMG_E2952.jpg);"></div>
-                    <div class="person__meta">
-                        <p class="person__name">Cooper Linn</p>
-                        <h6 class="person__title">Assistant Product Manager</h6>
-                    </div>
-                </div>
-                            <div class="person">
-                    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2019/07/manuhar.thumbnail.IMG_2609.jpg);"></div>
-                    <div class="person__meta">
-                        <p class="person__name">Manuhar Chopra</p>
-                        <h6 class="person__title">Finance</h6>
-                    </div>
-                </div>
-                            <div class="person">
-                    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2019/07/juan.thumbnail.jpg);"></div>
-                    <div class="person__meta">
-                        <p class="person__name">Juan Jimenez</p>
-                        <h6 class="person__title">Manager - Procurement and Operations</h6>
-                    </div>
-                </div>
-                            <div class="person">
-                    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2017/12/IMG_6595.jpg);"></div>
-                    <div class="person__meta">
-                        <p class="person__name">April Johnson</p>
-                        <h6 class="person__title">National Recruiting Business Partner</h6>
-                    </div>
-                </div>
-                            <div class="person">
-                    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2017/08/ABA-Headshot-04.jpg);"></div>
-                    <div class="person__meta">
-                        <p class="person__name">Brad Mandala</p>
-                        <h6 class="person__title">Director of Flight Operations</h6>
-                    </div>
-                </div>
-                            <div class="person">
-                    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2017/08/ABA-Headshot-02.jpg);"></div>
-                    <div class="person__meta">
-                        <p class="person__name">Craig Beese</p>
-                        <h6 class="person__title">Senior Project Manager</h6>
-                    </div>
-                </div>
-                            <div class="person">
-                    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2017/08/ABA-Headshot-08.jpg);"></div>
-                    <div class="person__meta">
-                        <p class="person__name">Shannon Allen</p>
-                        <h6 class="person__title">Manager - Business Operations</h6>
-                    </div>
-                </div>
-                            <div class="person">
-                    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2017/08/ABA-Headshot-11.jpg);"></div>
-                    <div class="person__meta">
-                        <p class="person__name">Samantha Prince</p>
-                        <h6 class="person__title">Product Designer</h6>
-                    </div>
-                </div>
-                            <div class="person">
-                    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2019/01/IMG_1037.jpg);"></div>
-                    <div class="person__meta">
-                        <p class="person__name">Dexter Ferguson</p>
-                        <h6 class="person__title">Product Designer</h6>
-                    </div>
-                </div>
-                            <div class="person">
-                    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2017/08/ABA-Headshot-03.jpg);"></div>
-                    <div class="person__meta">
-                        <p class="person__name">Sidney Collins</p>
-                        <h6 class="person__title">Senior Front-End Software Engineer &amp; Head of Culture</h6>
-                    </div>
-                </div>
-                            <div class="person">
-                    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2017/12/IMG_6589-2.jpg);"></div>
-                    <div class="person__meta">
-                        <p class="person__name">Terri Chu</p>
-                        <h6 class="person__title">Senior Software Engineer</h6>
-                    </div>
-                </div>
-                            <div class="person">
-                    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2017/12/IMG_6598.jpg);"></div>
-                    <div class="person__meta">
-                        <p class="person__name">Nick Keller</p>
-                        <h6 class="person__title">Software Engineer</h6>
-                    </div>
-                </div>
-                            <div class="person">
-                    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2018/02/IMG_3846-e1518129212419.jpg);"></div>
-                    <div class="person__meta">
-                        <p class="person__name">Kyle Plaugher</p>
-                        <h6 class="person__title">Front-End Web Developer</h6>
-                    </div>
-                </div>
-                            <div class="person">
-                    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2018/02/IMG_8359-2-e1518129291472.jpg);"></div>
-                    <div class="person__meta">
-                        <p class="person__name">Eric Sherouse</p>
-                        <h6 class="person__title">Senior Front-End 3D Developer</h6>
-                    </div>
-                </div>
-                            <div class="person">
-                    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2018/09/IMG_0506.jpg);"></div>
-                    <div class="person__meta">
-                        <p class="person__name">Brent Lewis</p>
-                        <h6 class="person__title">Senior Front-End 3D Developer</h6>
-                    </div>
-                </div>
-                            <div class="person">
-                    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2019/01/IMG_1034.jpg);"></div>
-                    <div class="person__meta">
-                        <p class="person__name">Jennifer Schiavone</p>
-                        <h6 class="person__title">Software Development Engineer in Test</h6>
-                    </div>
-                </div>
-                            <div class="person">
-                    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2018/07/IMG_9669.jpg);"></div>
-                    <div class="person__meta">
-                        <p class="person__name">Frank Obusek</p>
-                        <h6 class="person__title">Geospatial Engineer</h6>
-                    </div>
-                </div>
-                            <div class="person">
-                    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2018/04/IMG_8431-1.jpg);"></div>
-                    <div class="person__meta">
-                        <p class="person__name">Miguel Serrano, PhD.</p>
-                        <h6 class="person__title">Computer Vision &amp; Machine Learning Engineer</h6>
-                    </div>
-                </div>
-                            <div class="person">
-                    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2018/05/IMG_9465.jpg);"></div>
-                    <div class="person__meta">
-                        <p class="person__name">Yazeed Alaudah</p>
-                        <h6 class="person__title">Machine Learning Engineer</h6>
-                    </div>
-                </div>
-                            <div class="person">
-                    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2018/06/ValarieHeadshot.jpg);"></div>
-                    <div class="person__meta">
-                        <p class="person__name">Valarie Regas</p>
-                        <h6 class="person__title">Jr. DevOps Engineer</h6>
-                    </div>
-                </div>
-                            <div class="person">
-                    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2018/06/RobHeadshot.jpg);"></div>
-                    <div class="person__meta">
-                        <p class="person__name">Rob Gilliom</p>
-                        <h6 class="person__title">Sr. Full Stack Software Engineer</h6>
-                    </div>
-                </div>
-                            <div class="person">
-                    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2018/07/IMG_9765.jpg);"></div>
-                    <div class="person__meta">
-                        <p class="person__name">Mike Mommsen</p>
-                        <h6 class="person__title">Backend Software Engineer</h6>
-                    </div>
-                </div>
-                            <div class="person">
-                    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2017/08/ABA-Headshot-06.jpg);"></div>
-                    <div class="person__meta">
-                        <p class="person__name">Jared Salzmann</p>
-                        <h6 class="person__title">Senior Operations &amp; Automation Engineer</h6>
-                    </div>
-                </div>
-                            <div class="person">
-                    <div class="person__image draggable-marker" style="background-image: url(https://airbusaerial.com/wp-content/uploads/2019/04/laura.IMG_1702.thumb_.3.jpg);"></div>
-                    <div class="person__meta">
-                        <p class="person__name">Laura Chapman</p>
-                        <h6 class="person__title">Receptionist</h6>
-                    </div>
-                </div>
-        </div>
-    -->
-
 
 </div>
 
+<link rel="stylesheet" href="css/material_icons.css" />
+
+<script>
+
+$(document).ready(function () {
+
+});
+
+</script>
 </body>
 
 </html>
