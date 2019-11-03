@@ -1,10 +1,12 @@
 body {
 	margin:0;
-
 }
 textarea {
 	padding:10px;
 	line-height: 1.5;
+}
+.leaflet-container {
+	background: none; 
 }
 #topnav {
 	background-color: #fff;
@@ -16,10 +18,11 @@ textarea {
 	z-index: 90000;
 }
 #topselectors div {
+	line-height: 1;
 	float: left;
 	border: 1px solid #ccc;
 	border-radius: 12px;
-	padding: 7px 12px 7px 12px;
+	padding: 8px 12px 8px 12px;
 	margin-left:10px;
 	cursor: pointer;
 }
