@@ -25,9 +25,10 @@
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
 -->
 
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<link rel="stylesheet" type="text/css" href="css/application.min.css">
 	
+	<link rel="stylesheet" type="text/css" href="css/application.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+    
 	<style>
 		h1 {
 		    font-family: "Helvetica Neue", Helvetica, "Lato", sans-serif;
@@ -46,8 +47,11 @@
         <div id="showapps" style="display:none">
             <i class="material-icons" style="font-size: 42px">apps</i>
         </div>
-        <div style="float:left; padding:20px">
-            <h1>Office Map</h1>
+        <div id="topselectors" style="float:left; padding:20px">
+            <h1 style="float:left; margin-right:10px">Office Map</h1>
+            <div>Atlanta</div>
+            <div>Virginia</div>
+            <div>Kansas</div>
         </div>
         <div style="float:right">
             <div class="topcircle showaccount">
@@ -103,6 +107,9 @@
 
     <!-- zepto doesn't support draggable -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
 	
 	<!--
@@ -388,6 +395,8 @@ $(document).ready(function () {
 });
 
 </script>
+
+<script src="js/leaflet/Leaflet.ImageOverlay.Rotated.js"></script>
 </body>
 
 </html>

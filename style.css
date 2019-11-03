@@ -1,5 +1,10 @@
 body {
-	margin: 0;
+	margin:0;
+
+}
+textarea {
+	padding:10px;
+	line-height: 1.5;
 }
 #topnav {
 	background-color: #fff;
@@ -9,6 +14,17 @@ body {
 	border-bottomX: 1px solid #ccc;
 	position: fixed;
 	z-index: 90000;
+}
+#topselectors div {
+	float: left;
+	border: 1px solid #ccc;
+	border-radius: 12px;
+	padding: 7px 12px 7px 12px;
+	margin-left:10px;
+	cursor: pointer;
+}
+#topselectors div:hover {
+	background-color: #efefef;
 }
 #map {
 	overflow: auto;
@@ -44,10 +60,13 @@ body {
 	overflow: scroll;
 }
 #grouplisttop {
+	font-size: 20px;
+	line-height: 1;
 	background-color: #bbb;
 	position: absolute;
 	right: 0;
 	left: 0;
+	padding-top: 4px;
 	padding-right: 6px;
 	z-index: 1;
 }
@@ -56,6 +75,7 @@ body {
 	margin-bottom: 18px;
 }
 #grouplisttop i {
+	font-size: 26px;
 	color: #fff;
 	padding: 10px 6px;
 	cursor: pointer;
@@ -105,6 +125,9 @@ body .person__image { /* Applies when dragging out of scrollable grouplist */
     margin-bottom: 4px;
     cursor: pointer;
 }
+.iconcircle:hover {
+	background-color: #888;
+}
 .showpeople.active {
 	background-color: purple;
 }
@@ -131,4 +154,18 @@ body .person__image { /* Applies when dragging out of scrollable grouplist */
     z-index: 200;
 }
 
+/* NIGHT */
+body, textarea, .marker-menu, #topnav, #sidelist {
+	background-color: #333;
+	color: #aaa;
+}
+#grouplisttop {
+	background-color: #222;
+}
+.iconcircle, .topcircle {
+	background-color: #111;
+}
+#flexwrapper {
+	border-bottom: 1px solid #999;
+}
 
