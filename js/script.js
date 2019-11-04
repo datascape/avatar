@@ -1,5 +1,18 @@
 $(document).ready( function() {
 
+	var mbAttr = '',
+      mbUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZWUyZGV2IiwiYSI6ImNqaWdsMXJvdTE4azIzcXFscTB1Nmcwcm4ifQ.hECfwyQtM7RtkBtydKpc5g';
+
+	var grayscale = L.tileLayer(mbUrl, {id: 'mapbox.light', attribution: mbAttr}),
+	      satellite = L.tileLayer(mbUrl, {id: 'mapbox.satellite',   attribution: mbAttr}),
+	      streets = L.tileLayer(mbUrl, {id: 'mapbox.streets',   attribution: mbAttr});
+
+	//var layerGroups = {};
+	var dataParameters = []; 
+	var dp = {};
+	var layerControl = false;
+
+
 	// dark with labels
     // https://dnv9my2eseobd.cloudfront.net/v3/cartodb.map-4xtxp73f 
 
@@ -47,6 +60,20 @@ $(document).ready( function() {
 		L.control.zoom({
 		     position:'bottomright'
 		}).addTo(map);
+
+		var baseLayers = {
+		    "Grayscale": grayscale,
+		    "Streets": streets,
+		    "Satellite": satellite
+		  };
+
+		  var overlays = {};
+		  //dataParameters.forEach(function(ele) {
+		  //  overlays[ele.name] = ele.group; // Add to layer menu
+		  //})
+		  if(layerControl === false) {
+		    layerControl = L.control.layers(baseLayers, overlays).addTo(map);
+		  }
 
 
 	    // add a tile layer
