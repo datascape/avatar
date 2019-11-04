@@ -110,8 +110,8 @@ textarea {
 }
 
 #grouplist .person__image {
-    width: 64px;
-    height: 64px;
+    width: 82px;
+    height: 82px;
     margin-top: 10px;
 }
 .person { /* set when #grouplist resized */
@@ -128,10 +128,17 @@ textarea {
 
 body .person__image { /* Applies when dragging out of scrollable grouplist */
 	margin-top: 10px;
-	width: 32px;
-    height: 32px;
+
+	/* messes up centering if image is smaller when dragging. */
+	widthX: 32px;
+    heightX: 32px;
+
+    width: 82px;
+    height: 82px;
+
 	z-index: 999999;
 	transition: none;
+	margin-bottom: 20px;
 }
 #grouplist .person__meta {
 	background-color: rgba(255,255,255,.95);

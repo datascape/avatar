@@ -4,8 +4,8 @@ $(document).ready( function() {
       mbUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZWUyZGV2IiwiYSI6ImNqaWdsMXJvdTE4azIzcXFscTB1Nmcwcm4ifQ.hECfwyQtM7RtkBtydKpc5g';
 
 	var grayscale = L.tileLayer(mbUrl, {id: 'mapbox.light', attribution: mbAttr}),
-	      satellite = L.tileLayer(mbUrl, {id: 'mapbox.satellite',   attribution: mbAttr}),
-	      streets = L.tileLayer(mbUrl, {id: 'mapbox.streets',   attribution: mbAttr});
+	satellite = L.tileLayer(mbUrl, {id: 'mapbox.satellite',   attribution: mbAttr}),
+	streets = L.tileLayer(mbUrl, {id: 'mapbox.streets',   attribution: mbAttr});
 
 	//var layerGroups = {};
 	var dataParameters = []; 
@@ -64,7 +64,8 @@ $(document).ready( function() {
 		var baseLayers = {
 		    "Grayscale": grayscale,
 		    "Streets": streets,
-		    "Satellite": satellite
+		    "Satellite": satellite,
+		    "Light Green": basemaps['litegreen']
 		  };
 
 		  var overlays = {};
@@ -134,24 +135,40 @@ $(document).ready( function() {
 				containment: 'window',
 				scroll: false,
 				helper: 'clone',
+				start: function(event, ui) { 
+					//alert('test');
+					// Works well for marker, but img has issue due to size change
+			        $(this).draggable("option", "cursorAt", { // Centers icon on pickup, so it doesn't jump on dropoff.
+			            left: Math.floor(this.clientWidth / 2),
+			            top: Math.floor(this.clientHeight / 2)
+			        });
+			    },
 				stop: function ( e, ui ) {
-					// returning the icon to the menu
-					$( '.draggable-marker' ).css( 'top', posTop );
-					$( '.draggable-marker' ).css( 'left', posLeft );
+					// returning the icon to the menu - not needed when cloning, which is need to take outside of surrounding parent for movement to map.
+					//$( '.draggable-marker' ).css( 'top', posTop );
+					//$( '.draggable-marker' ).css( 'left', posLeft );
 
-					var offsetLeft = $("#map").position().left;
+					var offsetLeft = $("#map").offset().left;
 					var offsetTop = $("#map").offset().top;
-					//alert(offsetTop);
+					var iconUrl = 'img/marker-icon.png';
+					var iconSize = [20, 40];
+					var iconAnchor = [10, 40];
+
+					if ($(this).css('background-image') != "none") {
+						iconUrl = $(this).css('background-image').replace(/^url\(['"]?/,'').replace(/['"]?\)$/,'');
+						iconSize = [40, 40];
+						iconAnchor = [20, 40]; // tip of icon.  icon width/2, icon height
+					}
 					var coordsX = event.clientX - offsetLeft, // Where you grab marker needs to be factored in.
 						coordsY = event.clientY + 20 - offsetTop, // 20 is half of markers height
 						point = L.point( coordsX, coordsY ), // createing a Point object with the given x and y coordinates
 						markerCoords = map.containerPointToLatLng( point ), // getting the geographical coordinates of the point
 
-						// Creating a custom icon
+						// Create custom icon
 						myIcon = L.icon({
-							iconUrl: 'img/marker-icon.png', // the url of the img
-							iconSize: [20, 40],
-							iconAnchor: [10, 40] // the coordinates of the "tip" of the icon ( in this case must be ( icon width/ 2, icon height )
+							iconUrl: iconUrl, // the url of the marker or dragged img
+							iconSize: iconSize,
+							iconAnchor: iconAnchor , // the coordinates of the "tip" of the icon.  icon width/2, icon height
 						});
 
 					// Creating a new marker and adding it to the map
