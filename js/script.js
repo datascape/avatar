@@ -37,9 +37,11 @@ $(document).ready( function() {
 
 	var initMap = function () {
 		// create a map in the "map" div, set the view to a given place and zoom
-		var center = [37.7394, -25.6687];
-		// var center = [33.7773, -84.3890]; 19
-	    map = new L.Map( 'map', { zoomControl: false } ).setView( center, 3 );
+		//var center = [37.7394, -25.6687]; var zoom = 3; // Americas to India
+		var center = [33.7773, -84.3890]; var zoom = 19; // Centergy Tech Square
+		//var center = [33.7726, -84.3655]; var zoom = 19; // Ponce City Market
+
+	    map = new L.Map( 'map', { zoomControl: false } ).setView( center, zoom );
 		//disabled zoomControl when initializing map (which is topleft by default)
 		//the add zoom control topright
 		L.control.zoom({
@@ -185,9 +187,16 @@ $(document).ready( function() {
 
 	});
 
+	var location = {
+		Tech_Square: [33.7773, -84.3890],
+		Ponce: [33.7726, -84.3655],
+		Virginia: [38.9544, -77.4283],
+		Kansas: [37.7175, -97.2622],
+	}
 	$('#topselectors div').click(function(event) {
 		$(this).css("border","1px solid #999");
-		var center = [33.7726, -84.3655];
+		var loctext = $(this).text().replace(' ','_');
+		var center = location[loctext]; // Ponce City Market
 	    map.flyTo(center, 18);
 
 		var upperleft = [33.7726, -84.3655];
