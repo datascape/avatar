@@ -10,12 +10,18 @@ textarea {
 }
 #topnav {
 	background-color: #fff;
-	width: 100%;
+	
 	height: 70px;
 	
 	border-bottomX: 1px solid #ccc;
 	position: fixed;
 	z-index: 90000;
+	left: 56px;
+	right: 0px;
+}
+#topselectors {
+	float: left;
+	padding: 20px;
 }
 #topselectors div {
 	line-height: 1;
@@ -29,6 +35,9 @@ textarea {
 #topselectors div:hover {
 	background-color: #efefef;
 }
+.padding-left {
+	padding-left: 20px;
+}
 #map {
 	overflow: auto;
 	width:100%;
@@ -41,7 +50,20 @@ textarea {
 	padding: 5px;
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
+
+	position: fixed;
+	height: 100%;
+	z-index: 9;
+	border-right: 1px solid #ddd;
 }
+.marker-menu-space {
+	float:left;
+	width: 56px;
+	height: 100%;
+	background-color: red;
+	z-index: 99999999;
+}
+
 .draggable-marker {
     width: 20px;
     cursor: pointer;
@@ -92,6 +114,18 @@ textarea {
     height: 64px;
     margin-top: 10px;
 }
+.person { /* set when #grouplist resized */
+    width: 33%;
+    z-index: auto; /* Allows text box to overlap */
+}
+.person__title {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: none;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
 body .person__image { /* Applies when dragging out of scrollable grouplist */
 	margin-top: 10px;
 	width: 32px;
@@ -100,7 +134,7 @@ body .person__image { /* Applies when dragging out of scrollable grouplist */
 	transition: none;
 }
 #grouplist .person__meta {
-	background-color: rgba(255,255,255,.5);
+	background-color: rgba(255,255,255,.95);
 	z-index: 99999;
 	overflow: auto;
 }
@@ -157,18 +191,5 @@ body .person__image { /* Applies when dragging out of scrollable grouplist */
     z-index: 200;
 }
 
-/* NIGHT */
-body, textarea, .marker-menu, #topnav, #sidelist {
-	background-color: #333;
-	color: #aaa;
-}
-#grouplisttop {
-	background-color: #222;
-}
-.iconcircle, .topcircle {
-	background-color: #111;
-}
-#flexwrapper {
-	border-bottom: 1px solid #999;
-}
+
 

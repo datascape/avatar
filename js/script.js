@@ -39,19 +39,26 @@ $(document).ready( function() {
 		// create a map in the "map" div, set the view to a given place and zoom
 		var center = [37.7394, -25.6687];
 		// var center = [33.7773, -84.3890]; 19
-	    map = new L.Map( 'map', { zoomControl: true } ).setView( center, 3 );
+	    map = new L.Map( 'map', { zoomControl: false } ).setView( center, 3 );
+		//disabled zoomControl when initializing map (which is topleft by default)
+		//the add zoom control topright
+		L.control.zoom({
+		     position:'bottomright'
+		}).addTo(map);
+
 
 	    // add a tile layer
-	    /*
+	    
 	    L.tileLayer( 'http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 	    	maxZoom: 25,
 	        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 	    }).addTo(map);
-		*/
-
+		
+	    /* Dark, but we'll use layers instead
 		L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png', {
             attribution: 'Mapbox <a href="http://mapbox.com/about/maps" target="_blank">Terms &amp; Feedback</a>'
         }).addTo(map);
+		*/
 
 		// Neither worked:
 	    //var anything = basemaps['dark'];
