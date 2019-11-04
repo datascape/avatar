@@ -115,7 +115,10 @@ $(document).ready( function() {
 		//L.marker([32.7775, -83.3890]).addTo(map);
 
 		
-
+		map.on('click', function(ev){
+		  var latlng = map.mouseEventToLatLng(ev.originalEvent);
+		  console.log(latlng.lat + ', ' + latlng.lng);
+		});
 	}
 
 	// Dragging and dropping the markers to the map
@@ -216,32 +219,33 @@ $(document).ready( function() {
 
 	var location = {
 		Tech_Square: [33.7773, -84.3890],
-		Ponce: [33.7726, -84.3655],
+		Ponce: [33.7727, -84.3653],
 		Virginia: [38.9544, -77.4283],
-		Kansas: [37.7175, -97.2622],
+		Kansas: [37.719129880501434, -97.26137264626136],
 	}
 	$('#topselectors div').click(function(event) {
 		$(this).css("border","1px solid #999");
 		var loctext = $(this).text().replace(' ','_');
 		var center = location[loctext]; // Ponce City Market
-	    map.flyTo(center, 18);
+		if (loctext == 'Ponce') {
+			map.flyTo(center, 19);
+		} else {
+	    	map.flyTo(center, 18);
+		}
 
-		var upperleft = [33.7726, -84.3655];
-		var lowerright = [33.7716, -84.3635];
-
-		var imageUrl = 'img/PCM-floorplan.png',
-		  imageBounds = [upperleft, lowerright];
-
-		L.imageOverlay(imageUrl, imageBounds).addTo(map);
-		L.imageOverlay(imageUrl, imageBounds).bringToFront();
-
+	    // Works, but no rotation since only two points
+		//var upperleft = [33.7726, -84.3655];
+		//var lowerright = [33.7716, -84.3635];
+		//var imageUrl = 'img/PCM-floorplan.png', imageBounds = [upperleft, lowerright];
+		//L.imageOverlay(imageUrl, imageBounds).addTo(map);
+		//L.imageOverlay(imageUrl, imageBounds).bringToFront();
 		
-		var topleft    = L.latLng(40.52256691873593, -3.7743186950683594),
-		topright   = L.latLng(40.5210255066156, -3.7734764814376835),
-		bottomleft = L.latLng(40.52180437272552, -3.7768453359603886);
+		var topleft = L.latLng(33.773225795244585, -84.36676025390626),
+		topright   = L.latLng(33.77312598704505, -84.36489004176111),
+		bottomleft = L.latLng(33.77234117352756, -84.3668319610879);
 
 		var overlay = L.imageOverlay.rotated("img/PCM-floorplan.png", topleft, topright, bottomleft, {
-			opacity: 0.4,
+			opacity: 1.0,
 			interactive: true
 		}).addTo(map);
 		
