@@ -60,8 +60,8 @@ $(document).ready( function() {
 		var baseLayers = {
 			"Open Street Map": basemaps['osm'],
 			"Gray and Green": basemaps['litegreen'],
+			"Beige and Green": basemaps['streets'],
 		    "Grayscale": basemaps['grayscale'],
-		    "Streets": basemaps['streets'],
 		    "Satellite": basemaps['satellite'],
 		    "Esri": basemaps['esri'],
 		    "Dark": basemaps['dark'],
