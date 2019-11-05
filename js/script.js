@@ -16,6 +16,19 @@ $(document).ready( function() {
     	'grayscale' : L.tileLayer(mbUrl, {id: 'mapbox.light', attribution: '<a href="https://mapbox.com">Mapbox</a> ' + mbAttr}),
     	'satellite' : L.tileLayer(mbUrl, {maxZoom: 25, id: 'mapbox.satellite', attribution: '<a href="https://mapbox.com">Mapbox</a> ' + mbAttr}),
     	'streets' : L.tileLayer(mbUrl, {id: 'mapbox.streets',   attribution: '<a href="https://mapbox.com">Mapbox</a> ' + mbAttr}),
+        'cycling' : L.tileLayer('https://tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=5d7d3f44996c43beac7c0a0072b1efd3', {
+          attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }),
+        'landscape' : L.tileLayer('https://tile.thunderforest.com/landscape/{z}/{x}/{y}.png?apikey=5d7d3f44996c43beac7c0a0072b1efd3', {
+          attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }),
+        'outdoors' : L.tileLayer('https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=5d7d3f44996c43beac7c0a0072b1efd3', {
+          attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }),
+        'transport' : L.tileLayer('https://tile.thunderforest.com/transport/{z}/{x}/{y}.png?apikey=5d7d3f44996c43beac7c0a0072b1efd3', {
+          attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }),
+
         'positron_light_nolabels' : L.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
           attributionX: 'positron_lite_rainbow'
         }),
@@ -58,11 +71,15 @@ $(document).ready( function() {
 		}).addTo(map);
 
 		var baseLayers = {
+			"Satellite": basemaps['satellite'],
 			"Open Street Map": basemaps['osm'],
+			"Public Transport": basemaps['transport'],
+			"Cycling Routes": basemaps['cycling'],
 			"Gray and Green": basemaps['litegreen'],
 			"Beige and Green": basemaps['streets'],
 		    "Grayscale": basemaps['grayscale'],
-		    "Satellite": basemaps['satellite'],
+		    "Landscape Topo": basemaps['landscape'],
+		    "Outdoor Topo": basemaps['outdoors'],
 		    "Esri": basemaps['esri'],
 		    "Dark": basemaps['dark'],
 		    "Firemap": basemaps['firemap'],
@@ -250,12 +267,14 @@ $(document).ready( function() {
 		$(this).css("border","1px solid #999");
 		var loctext = $(this).text().replace(' ','_');
 		var center = location[loctext]; // Ponce City Market
-		if (loctext == 'Ponce') {
+		if (loctext == '+') {
+			alert('Click the map to send a lat/lon value to the browser console.\rAdd the lat/lon value to the location object in script.js.');
+			return;
+		} else if (loctext == 'Ponce') {
 			map.flyTo(center, 18); // Increase this to 19 after setting other baselayers to jump back to closest available tiles when changing base layers, otherwise no tiles as closest level.
 		} else {
 	    	map.flyTo(center, 18);
 		}
-
 	    // Works, but no rotation since only two points
 		//var upperleft = [33.7726, -84.3655];
 		//var lowerright = [33.7716, -84.3635];
