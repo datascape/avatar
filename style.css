@@ -1,5 +1,6 @@
 body {
 	margin:0;
+	background-color: #fff;
 }
 textarea {
 	padding:10px;
@@ -10,12 +11,14 @@ textarea {
 }
 #topnav {
 	background-color: #fff;
-	
 	height: 70px;
-	
 	border-bottomX: 1px solid #ccc;
 	position: fixed;
 	z-index: 90000;
+
+	width:100%;
+}
+#topnav-with-side {
 	left: 56px;
 	right: 0px;
 }
@@ -46,17 +49,19 @@ textarea {
 .marker-menu {
 	background: #FBFBFB;
 	width: 56px;
-	border-right: 1px solid #fff;
 	padding: 5px;
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
+	border-right: 1px solid #ddd;
+}
 
+.marker-menu-fixed {
 	position: fixed;
 	height: 100%;
 	z-index: 9;
-	border-right: 1px solid #ddd;
 }
 .marker-menu-space {
+	display:none;
 	float:left;
 	width: 56px;
 	height: 100%;
@@ -129,7 +134,11 @@ textarea {
 body .person__image { /* Applies when dragging out of scrollable grouplist */
 	margin-top: 10px;
 
-	/* messes up centering if image is smaller when dragging. */
+	/* messes up centering if image is smaller when dragging. 
+	Someone else might want to experiment further.
+	https://stackoverflow.com/questions/5750302/jquery-draggable-center-cursorat-vertically/16438785
+	https://stackoverflow.com/questions/34827181/make-cursor-position-in-center-for-ui-helper-in-jquery-ui-draggable-method/34830265#34830265
+	*/
 	widthX: 32px;
     heightX: 32px;
 
@@ -139,6 +148,9 @@ body .person__image { /* Applies when dragging out of scrollable grouplist */
 	z-index: 999999;
 	transition: none;
 	margin-bottom: 20px;
+}
+.person__image {
+	border: solid 2px #fff;
 }
 #grouplist .person__meta {
 	background-color: rgba(255,255,255,.95);
@@ -190,8 +202,10 @@ body .person__image { /* Applies when dragging out of scrollable grouplist */
     transform: translate(-50%, -50%);
 }
 #flexwrapper {
-	border-top: 1px solid #ccc;
-	box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+	margin-top: 10px;
+	border-top: 1px solid #eee;
+	border-bottom: 1px solid #eee;
+	box-shadowX: 0 1px 10px rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: space-between;
     position: relative;
