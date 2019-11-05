@@ -169,11 +169,13 @@ $(document).ready( function() {
 
 					var offsetLeft = $("#map").offset().left;
 					var offsetTop = $("#map").offset().top;
+					var className = 'icon__image';
 					var iconUrl = 'img/marker-icon.png';
 					var iconSize = [20, 40];
 					var iconAnchor = [10, 40];
 
 					if ($(this).css('background-image') != "none") {
+						className = 'person__image';
 						iconUrl = $(this).css('background-image').replace(/^url\(['"]?/,'').replace(/['"]?\)$/,'');
 						iconSize = [40, 40];
 						iconAnchor = [20, 40]; // tip of icon.  icon width/2, icon height
@@ -188,7 +190,7 @@ $(document).ready( function() {
 							iconUrl: iconUrl, // the url of the marker or dragged img
 							iconSize: iconSize,
 							iconAnchor: iconAnchor, // the coordinates of the "tip" of the icon.  icon width/2, icon height
-							className: 'person__image'
+							className: className
 						});
 
 						// Add class person__image
