@@ -213,6 +213,13 @@ body .person__image { /* Applies when dragging out of scrollable grouplist */
     position: relative;
     z-index: 200;
 }
-
+.textInput {
+	font-size: 16px;
+	min-height: 42px;
+	border-radius: 6px;
+	padding-left: 12px;
+	margin-top: 18px;
+	border: 1px solid #d9d9de;
+}
 
 

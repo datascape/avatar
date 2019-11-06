@@ -42,6 +42,8 @@
     <!--link rel="stylesheet" type="text/css" href="css/dark.css" -->
     <link rel="stylesheet" type="text/css" href="css/display.css">
 
+    <script src="js/md5.js"></script>
+
     <!-- zepto doesn't support draggable -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
@@ -98,7 +100,9 @@
             <div style="font-size:22px; padding:4px 10px 6px 10px">+</div>
         </div>
         <div style="float:right">
-            <div class="topcircle showaccount">
+            
+            <input id="email"  class="textInput" style="float:left; min-width:250px" placeholder="Your email" type="text" style="width: 120px; margin-top: 0px" />
+            <div class="topcircle showaccount" style="float:left">
                 <i class="material-icons">person</i>
             </div>
         </div>
@@ -157,9 +161,8 @@
 <br>
 <div style="margin:0 auto; max-width: 1020px">
 
-    <br>
-    <img class="draggable-marker" style="float:left; margin-right:5px; margin-top:-5px" src="img/marker-icon.png" alt="marker" />
-	<!--
+    
+    <!--
     <h1>Map your office</h1>
 	<img src="img/centergy-12.jpg" style="max-width:1020px"><br>
 	-->
@@ -197,6 +200,9 @@
 
 <div class="sectionContent">
 
+<img class="draggable-marker" style="float:left; margin-right:5px; margin-top:-6px" src="img/marker-icon.png" alt="marker" />
+    
+<h1 style="float:left; margin-right:10px">Logistics Partners</h1>
 <div style="clear:both"></div>
 
 <div id="showCatPanel" style="positionX:absolute;right:5px;top:8px;color:#555;cursor:pointer;padding:10px 10px 0 0;z-index:999999;font-size:24px;display:none"> 
@@ -263,9 +269,6 @@
 
 </div>
 
-
-
-<h1 style="float:left; margin-right:10px">Logistics Partners</h1>
 
 <!-- Common with display -->
 <div class="pagePanel" style="margin-bottom:12px">
