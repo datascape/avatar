@@ -2,7 +2,7 @@ function SearchFormTextCheck(t, dirn) {
 	if (dirn == 1 && t.value == "") {
 		t.value = "";
 		$(".fieldSelector").show();
-		console.log('boo');
+		//console.log('boo');
 	}
 	//return false;
 	event.stopPropagation();
@@ -231,7 +231,7 @@ function displayResults() {
 
     if (dataMatchCount > 0) {
     	//alert("show") // was twice BUGBUG
-    	$("#dataList").prepend(dataMatchCount + " results displayed from " + (dataSet.length - 1) + " records.<br><br>");
+    	//$("#dataList").prepend(dataMatchCount + " results displayed from " + (dataSet.length - 1) + " records.<br><br>");
   		$("#resultsPanel").show();
   		$("#dataList").show();
   	} else {
@@ -285,7 +285,7 @@ function displayRow(rowArray) {
 var dataSet = [];
 function loadHtmlTable(applyFilter) {
 	//d3.text("exporters/export.csv", function(data) {
-	d3.text("exporters/export.csv").then(function(data) {
+	d3.text("data/toy.csv").then(function(data) {
       //dataSet = d3.csv.parseRows(data);
       dataSet = d3.csvParseRows(data);
       var listHeader = [];

@@ -36,21 +36,24 @@
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
 -->
 
-	
+	<!--
 	<link rel="stylesheet" type="text/css" href="css/application.min.css">
-	<link rel="stylesheet" type="text/css" href="style.css">
+-->
+	<link rel="stylesheet" type="text/css" href="css/style.css">
     <!--link rel="stylesheet" type="text/css" href="css/dark.css" -->
+    <link rel="stylesheet" type="text/css" href="css/search-filters.css">
     <link rel="stylesheet" type="text/css" href="css/display.css">
 
     <script src="js/md5.js"></script>
 
+    <script type="text/javascript" src="js/d3/d3.v5.min.js"></script>
+    <script type="text/javascript" src="js/common/showdown.min.js"></script>
+
     <!-- zepto doesn't support draggable -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-
-    
-
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
-    
+    <script type="text/javascript" src="js/common/common.js"></script>
+
     <!--
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
     -->
@@ -101,7 +104,7 @@
         </div>
         <div style="float:right">
             
-            <input id="email"  class="textInput" style="float:left; min-width:250px" placeholder="Your email" type="text" style="width: 120px; margin-top: 0px" />
+            <input id="email" class="textInput" style="float:left; min-width:250px; margin-top: 18px" placeholder="Your email" type="text" style="width: 120px; margin-top: 0px" />
             <div class="topcircle showaccount" style="float:left">
                 <i class="material-icons">person</i>
             </div>
@@ -161,7 +164,6 @@
 <br>
 <div style="margin:0 auto; max-width: 1020px">
 
-    
     <!--
     <h1>Map your office</h1>
 	<img src="img/centergy-12.jpg" style="max-width:1020px"><br>
@@ -172,15 +174,11 @@
     <div style="max-height:520px; overflow:hidden">
 	   <img src="../neighborhood/atlanta/pcm/img/PCM-floorplan.jpg"><br>
 	</div>
+    <br><br>
     -->
 
-    <br><br>
-
-
-
-
-    </div>
-    <br><br>
+</div>
+    
 
 
 </div>
@@ -200,9 +198,12 @@
 
 <div class="sectionContent">
 
-<img class="draggable-marker" style="float:left; margin-right:5px; margin-top:-6px" src="img/marker-icon.png" alt="marker" />
+<div style="margin-top:8px">
+    <img class="draggable-marker" style="float:left; margin-right:5px; margin-top:-6px" src="img/marker-icon.png" alt="marker" />
     
-<h1 style="float:left; margin-right:10px">Logistics Partners</h1>
+    <h1 style="float:left; margin-right:10px;">Logistics Partners</h1>
+</div>
+
 <div style="clear:both"></div>
 
 <div id="showCatPanel" style="positionX:absolute;right:5px;top:8px;color:#555;cursor:pointer;padding:10px 10px 0 0;z-index:999999;font-size:24px;display:none"> 
@@ -218,23 +219,8 @@
 
     <div id="hideCatPanel" style="position:absolute;right:5px;top:8px;color:#777;cursor:pointer;padding-right:10px;z-index:10;">&#10005;</div>
 
-    <!--
-    <div style="border-bottom:1px solid #ddd">
 
-        Explore Georgia
-    </div>
-    -->
-
-    
-
-    <div class="catHeader" style="z-index:0;margin:0 20px 3px 0">
-        <b><span class='exporter'>Export Georgia, USA </span><!--Directory--></b>
-        <div class="arrowdown"></div>
-    </div>
-
-    <div id="addCompany" class='greenButton detailbutton lowerButton' style="float:left;margin-left:8px">Add Company</div>
-    <br><br><br>
-
+    <!-- left column title -->
 
     
     <div id="catListHolder">
@@ -527,9 +513,9 @@
                 <!-- showAll showAllResults searchHeight -->
                 <div id="clearButton" class="detailbutton" style="float:left;margin:0px 6px 0px 0px">Clear</div>
 
-                <div id="botButton" class="detailbutton localonly" style="float:left;margin:0px 6px 0px 0px;padding:5px 8px 0px 8px"><img src="../img/icon/bot.png" style="width:24px"></div>
+                <div id="botButton" class="detailbutton localonly" style="float:left;margin:0px 6px 0px 0px;padding:5px 8px 0px 8px"><img src="img/icon/bot.png" style="width:24px"></div>
 
-                <div id="mapButton" class="detailbutton localonly" style="float:left;margin:0px;padding:5px 8px 0px 8px"><img src="../img/icon/map.png" style="width:22px"></div>
+                <div id="mapButton" class="detailbutton localonly" style="display:none !important;float:left;margin:0px;padding:5px 8px 0px 8px"><img src="img/icon/map.png" style="width:22px"></div>
                     
                 <div id="catListHolderShow" class='detailbutton lowerButton' style="float:left;margin-left:8px">Industries . . .</div>
             </div>
@@ -546,12 +532,11 @@
 
     <div id="hideBotPanel" style="position:absolute;right:5px;top:8px;color:#777;cursor:pointer;padding-right:10px">&#10005;</div>
 
-    <div style="float:left; margin-right:10px"><img src="../img/icon/bot.png" style="width:48px"></div>
+    <div style="float:left; margin-right:10px"><img src="img/icon/bot.png" style="width:48px"></div>
     <div id="botConversation" style="overflow:auto;">
         <div id="botWelcome" style="display:none">
-        <div style="font-size:18px">Get Chatty, Y'all!</div>
-        We have <span id="catRowCount">X</span> product categories to choose from.<br>
-        Chat with our bot to narrow your results.<br><br>
+        <div style="font-size:18px">Get Chatty</div>
+        Chat with our knowledge bot to narrow your results.<br><br>
         </div>
 
         <b>Sample questions:</b><br>
@@ -658,7 +643,7 @@
     <!-- https://datascape.github.io/community/map/leaflet/#columns=JobsAgriculture:100    onLoad="showBackArrow()"-->
     <iframe src="" style="display:none" class="iframe" name="mainframe" id="mainframe"></iframe>
 
-    <div id="dataListTop" class='exporter' style="overflow:auto;margin-bottom:8px">
+    <div id="dataListTop" class='exporter' style="display:none; overflow:auto;margin-bottom:8px">
 
         <div style='float:left'>Select up to 10 companies when requesting contact info.</div>
         <!--div style='float:left'>When requesting contact info, send us the names of up to 10 exporters.</div-->
@@ -666,7 +651,7 @@
         <div id="rightButtons" style="float:right;">
             <div id="showMap" class="detailbutton" style="display:none; float:left;margin-right:10px">Map</div>
             <div id="toggleList" class="detailbutton localonly" style="float:left;margin-right:10px">Toggle</div>
-            <div id="requestInfo" class='orangeButton detailbutton lowerButton' style="float:left;">Request Contact Info</div>
+            <div id="requestInfo" class='orangeButton detailbutton lowerButton' style="display:none; float:left;">Request Contact Info</div>
         </div>
 
     </div>
@@ -989,6 +974,7 @@ $(document).ready(function () {
 
 </script>
 
+<script src="js/display/display-lower.js"></script>
 <script src="js/leaflet/Leaflet.ImageOverlay.Rotated.js"></script>
 </body>
 
