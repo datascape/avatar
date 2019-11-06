@@ -39,6 +39,9 @@ textarea {
 #topselectors div:hover {
 	background-color: #efefef;
 }
+#topselectors div.active {
+	border:1px solid #999;
+}
 .padding-left {
 	padding-left: 20px;
 }

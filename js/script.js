@@ -266,7 +266,8 @@ $(document).ready( function() {
 		Kansas: [37.719129880501434, -97.26137264626136],
 	}
 	$('#topselectors div').click(function(event) {
-		$(this).css("border","1px solid #999");
+		$('#topselectors div').removeClass('active');
+		$(this).addClass('active');
 		var loctext = $(this).text().replace(' ','_');
 		var center = location[loctext]; // Ponce City Market
 		if (loctext == '+') {
