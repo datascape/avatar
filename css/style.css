@@ -167,7 +167,7 @@ textarea {
     font-weight: 400;
     line-height: 1;
     margin: 10px 0px 10px 0px;
-    colorX: #61696E;
+    color: #5994A5;
 }
 .person__title {
     font-size: 10px;
@@ -176,6 +176,7 @@ textarea {
     padding-left: 5px;
     padding-right: 5px;
     margin: 0px 0px 10px 0px;
+    color: #61696E;
 }
 .h6, h6 { /* for .person__title */
     margin-bottom: .75rem;
@@ -296,5 +297,8 @@ body .person__image { /* Applies when dragging out of scrollable grouplist */
 	padding-left: 12px;
 	border: 1px solid #d9d9de;
 }
-
-
+/*
+.leaflet-marker-draggable, .draggable-marker' {
+	cursor: hand !important;
+}
+*/

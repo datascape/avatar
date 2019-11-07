@@ -282,7 +282,12 @@ function displayRow(rowArray) {
 	$("#dataList").append( "<div><div><div style='float:right'>Add</div>" + rowArray[0] + "</div><div><b class='exporter'>Export Categories: </b><span class='exporter'> " + rowArray[2] + "</span></div><div>" + rowArray[3] + "</div><div>" + rowArray[4] + "</div><div><b>Product HS Codes: </b>" + rowArray[5] + "</div></div>");
 	//<div>" + rowArray[6] + "</div><div>" + rowArray[7] + "</div>
 }
-var dataSet = [];
+
+var overlays = {};
+var dataParameters = [];
+var dp = {};
+var layerControl = false;
+var dataSet = []; // This will be eliminated
 function loadHtmlTable(applyFilter) {
 	//d3.text("exporters/export.csv", function(data) {
 	d3.text("data/toy.csv").then(function(data) {
@@ -303,10 +308,127 @@ function loadHtmlTable(applyFilter) {
       	*/
       	       	
       }
-      //displayResults();
       displayGrid(applyFilter);
+
+      	dp = {
+	      numColumnsX: ["zip","lat","lon"],
+	      valueColumn: "name",
+	      latColumnX: "lat",
+	      lonColumnX: "lon",
+	      //scaleType: "scaleQuantile",
+	      scaleType: "scaleOrdinal",
+	    }
+	    dp.name = "Smart Data Projects"; // Must match "map.addLayer(overlays" below.
+	    dp.data = readCsvData(data, dp.numColumns, dp.valueColumn);
+
+	    // To activate when swicthing to mapable data
+	    //dp.scale = getScale(dp.data, dp.scaleType, dp.valueColumn);
+	    dp.group = L.layerGroup();
+	    dp.iconName = 'star';
+	    dataParameters.push(dp);
+	    overlays[dp.name] = dp.group; // Allows for use of dp.name with removeLayer and addLayer
+
+	    if(layerControl === false) {
+	      // To activate - how to handle baseLayers
+	      //layerControl = L.control.layers(baseLayers, overlays).addTo(map);
+	    }
+	    // To activate 
+	    //layerControl.addOverlay(dp.group, dp.name); // Appends to existing layers
+	    // To activate 
+	    //addIcons(dp);
+
     }); 	
 }
+function readCsvData(_data, columnsNum, valueCol) {
+    //console.log(_data);
+    
+    if (typeof columnsNum !== "undefined") {
+      _data.forEach( function (row) {
+        //row = removeWhiteSpaces(row);
+        convertToNumber(row, columnsNum);
+      });
+    }
+    console.log(_data);
+    return _data;
+}
+function convertToNumber(d, _columnsNum) {
+    for (var perm in d) {
+      if (_columnsNum.indexOf(perm) > -1)
+        if (Object.prototype.hasOwnProperty.call(d, perm)) {
+          d[perm] = +d[perm];
+        }
+      }  
+    return d;
+}
+// Scales: http://d3indepth.com/scales/
+function getScale(data, scaleType, valueCol) {
+    var scale;
+    if (scaleType === "scaleThreshold") {
+      var min = d3.min(data, function(d) { return d[valueCol]; });
+      var max = d3.max(data, function(d) { return d[valueCol]; });
+      var d = (max-min)/7;
+      scale = d3.scaleThreshold()
+        .domain([min+1*d,min+2*d,min+3*d,min+4*d,min+5*d,min+6*d])
+        .range(['#ffffe0','#ffd59b','#ffa474','#f47461','#db4551','#b81b34','#8b0000']);
+    } else if (scaleType === "scaleQuantize") {
+      scale = d3.scaleQuantize()
+        .domain(d3.extent(data, function(d) { return d[valueCol]; }))
+        .range(['#ffffe0','#ffd59b','#ffa474','#f47461','#db4551','#b81b34','#8b0000']);
+    } else if (scaleType === "scaleQuantile") {
+      scale = d3.scaleQuantile()
+        .domain(data.map(function(d) { return d[valueCol]; }).sort(function(a, b){return a-b}))
+        .range(['#ffffe0','#ffd59b','#ffa474','#f47461','#db4551','#b81b34','#8b0000']);            
+    } else if (scaleType === "scaleOrdinal") {
+      scale = d3.scaleOrdinal()
+        .domain(data.map(function(d) { return d[valueCol]; }))
+        .range(d3.schemePaired);
+    }
+    return scale;
+}
+function addIcons(dp) {
+    var circle;
+    var iconColor, iconColorRGB, iconName;
+    var colorScale = dp.scale;
+    dp.data.forEach(function(element) {
+      iconColor = colorScale(element[dp.valueColumn]);
+      if (dp.color) {
+        iconColor = dp.color;
+      }
+      // How to make element always lowercase?
+      console.log("element " + element + " iconColor: " + iconColor)
+      if (typeof dp.latColumn == "undefined") {
+        dp.latColumn = "lat";
+      }
+      if (typeof dp.lonColumn == "undefined") {
+        dp.lonColumn = "lon";
+      }
+      iconColorRGB = hex2rgb(iconColor);
+      iconName = dp.iconName;
+
+    var busIcon = L.IconMaterial.icon({
+      icon: iconName,            // Name of Material icon
+      iconColor: '#fff',              // Material icon color (could be rgba, hex, html name...)
+      markerColor: 'rgba(' + iconColorRGB + ',0.7)',  // Marker fill color
+      outlineColor: 'rgba(' + iconColorRGB + ',0.7)',            // Marker outline color
+      outlineWidth: 1,                   // Marker outline width 
+    })
+    
+    // Attach the icon to the marker and add to the map
+    //L.marker([element[dp.latColumn], element[dp.lonColumn]], {icon: busIcon}).addTo(map)
+    circle = L.marker([element[dp.latColumn], element[dp.lonColumn]], {icon: busIcon}).addTo(dp.group);
+
+
+      var output = "<b>" + element[dp.valueColumn] + "</b><br>" + element.address + "<br>" + element.city + " " + element.state + " " + element.zip + "<br>" + element.phone + " " + element.phone_afterhours + "<br>Hours: " + element.schedule + "<br>";
+      if (element[dp.latColumn]) {
+          output += "<a href='https://www.waze.com/ul?ll=" + element[dp.latColumn] + "%2C" + element[dp.lonColumn] + "&navigate=yes&zoom=17'>Waze  Directions</a><br>";
+      }
+      circle.bindPopup(output);
+        // "<br>Latitude: " + element[dp.latColumn] + 
+
+      //alert(output);
+    });
+}
+
 function displayListX() {
 	console.log("displayList");
 	var matchCount = 0;

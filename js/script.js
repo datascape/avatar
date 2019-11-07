@@ -94,6 +94,9 @@ $(document).ready( function() {
 		    baseLayers["Satellite"].addTo(map); // Set the initial baselayer.
 		  }
 
+		  //$('.leaflet-container').css('cursor','crosshair');
+
+
 
 	    // add a tile layer
 	    /*
@@ -261,7 +264,7 @@ $(document).ready( function() {
 
 	var location = {
 		Tech_Square: [33.77734, -84.3890],
-		Ponce: [33.7727, -84.3653],
+		Ponce: [33.77279539985879, -84.36538422550765],
 		Virginia: [38.9544, -77.4283],
 		Kansas: [37.719129880501434, -97.26137264626136],
 	}
@@ -274,7 +277,7 @@ $(document).ready( function() {
 			alert('Click the map to send a lat/lon value to the browser console.\rAdd the lat/lon value to the location object in script.js.');
 			return;
 		} else if (loctext == 'Ponce') {
-			map.flyTo(center, 18); // Increase this to 19 after setting other baselayers to jump back to closest available tiles when changing base layers, otherwise no tiles as closest level.
+			map.flyTo(center, 19); // Increase this to 19 after setting other baselayers to jump back to closest available tiles when changing base layers, otherwise no tiles as closest level.
 		} else {
 	    	map.flyTo(center, 18);
 		}
@@ -285,9 +288,9 @@ $(document).ready( function() {
 		//L.imageOverlay(imageUrl, imageBounds).addTo(map);
 		//L.imageOverlay(imageUrl, imageBounds).bringToFront();
 		
-		var topleft = L.latLng(33.773225795244585, -84.36676025390626),
-		topright   = L.latLng(33.77312598704505, -84.36489004176111),
-		bottomleft = L.latLng(33.77234117352756, -84.3668319610879);
+		var topleft = L.latLng(33.7732854449586, -84.36675018130354),
+		topright   = L.latLng(33.7731472115384, -84.36487048732805),
+		bottomleft = L.latLng(33.77237131658895, -84.36684135048353);
 
 		var overlay = L.imageOverlay.rotated("img/PCM-floorplan.png", topleft, topright, bottomleft, {
 			opacity: 1.0,
@@ -302,53 +305,59 @@ $(document).ready( function() {
 	// Fetch
 	document.getElementById("email").value = localStorage.getItem("email");
 
-/*
- * jQuery.gravatar 1.0.1 (2009-01-08)
- *
- * Written by Zach Leatherman
- * http://zachleat.com
- *
- * Licensed under the WTFPL (http://sam.zoy.org/wtfpl/)
- *
- * Requires jQuery http://jquery.com (1.2.6 at time of release)
- * Requires http://pajhome.org.uk/crypt/md5/md5.js
- */
+	/*
+	 * jQuery.gravatar 1.0.1 (2009-01-08)
+	 *
+	 * Written by Zach Leatherman
+	 * http://zachleat.com
+	 *
+	 * Licensed under the WTFPL (http://sam.zoy.org/wtfpl/)
+	 *
+	 * Requires jQuery http://jquery.com (1.2.6 at time of release)
+	 * Requires http://pajhome.org.uk/crypt/md5/md5.js
+	 */
 
-(function($)
-{
-    $.gravatar = function(emailAddress, overrides)
-    {
-        var options = $.extend({
-            // Defaults are not hardcoded here in case gravatar changes them on their end.
-            // integer size: between 1 and 512, default 80 (in pixels)
-            size: '',
-            // rating: g (default), pg, r, x
-            rating: '',
-            // url to define a default image (can also be one of: identicon, monsterid, wavatar)
-            image: '',
-            // secure
-            secure: false,
-            // support css on img element
-            classes: ''
-        }, overrides);
+	(function($)
+	{
+	    $.gravatar = function(emailAddress, overrides)
+	    {
+	        var options = $.extend({
+	            // Defaults are not hardcoded here in case gravatar changes them on their end.
+	            // integer size: between 1 and 512, default 80 (in pixels)
+	            size: '',
+	            // rating: g (default), pg, r, x
+	            rating: '',
+	            // url to define a default image (can also be one of: identicon, monsterid, wavatar)
+	            image: '',
+	            // secure
+	            secure: false,
+	            // support css on img element
+	            classes: ''
+	        }, overrides);
 
-        var baseUrl = options.secure ? 'https://secure.gravatar.com/avatar/' : 'http://www.gravatar.com/avatar/';
+	        var baseUrl = options.secure ? 'https://secure.gravatar.com/avatar/' : 'http://www.gravatar.com/avatar/';
 
-        return $('<img src="' + baseUrl +
-            hex_md5(emailAddress) +
-            '.jpg?' +
-            (options.size ? 's=' + options.size + '&' : '') +
-            (options.rating ? 'r=' + options.rating + '&' : '') +
-            (options.image ? 'd=' + encodeURIComponent(options.image) : '') +
-            '"' +
-            (options.classes ? ' class="' + options.classes + '"' : '') +
-            ' />').bind('error', function()
-            {
-                $(this).remove();
-            });
-    };
-})(jQuery);
+	        return baseUrl +
+	            hex_md5(emailAddress) +
+	            '.jpg?' +
+	            (options.size ? 's=' + options.size + '&' : '') +
+	            (options.rating ? 'r=' + options.rating + '&' : '') +
+	            (options.image ? 'd=' + encodeURIComponent(options.image) : '');
 
-	$('body').append($.gravatar('zachleatherman@gmail.com'));
+	        return $('<img src="' + baseUrl +
+	            hex_md5(emailAddress) +
+	            '.jpg?' +
+	            (options.size ? 's=' + options.size + '&' : '') +
+	            (options.rating ? 'r=' + options.rating + '&' : '') +
+	            (options.image ? 'd=' + encodeURIComponent(options.image) : '') +
+	            '"' +
+	            (options.classes ? ' class="' + options.classes + '"' : '') +
+	            ' />').bind('error', function()
+	            {
+	                $(this).remove();
+	            });
+	    };
+	})(jQuery);
 
+	
 });

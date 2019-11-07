@@ -99,6 +99,17 @@ $(document).ready(function () {
 		$('#hsCatList > div').css('border', 'solid 1px #fff');
 		productList("01","99","Harmonized System (HS) Product Categories");
 	});
+	
+	$('.showaccount').click(function () {
+		if ($('#accountPanel').css('display') === 'none') {
+        	$('#accountPanel').show();
+        	// To activate
+        	//$('body').append($.gravatar('loren@dreamstudio.com'));
+    	} else {
+    		$('#accountPanel').hide();
+    	}
+        event.stopPropagation();
+    });
 	$('#botButton').click(function () {
 		if ($('#botPanel').css('display') === 'none') {
         	$('#botPanel').show();
