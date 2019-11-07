@@ -155,7 +155,7 @@ function displayResults() {
 
 		    	if (dataSet[i][0].length > 0) {
 			    	//console.log("display the row: " + dataSet[i][0]);
-			    	var dataRow = ("<div style='position:relative'><div class='localonlyX' style='float:left;min-width:28px;margin-top:2px'><input name='contact' type='checkbox' value='" + dataSet[i][0] + "'></div><div style='overflow:auto'><div><div class='localonly showItemMenu' style='float:right'>&mldr;</div> " + dataSet[i][0] + "</div>");
+			    	var dataRow = ("<div style='position:relative'><div class='localonlyX' style='float:left;min-width:28px;margin-top:2px'><input name='contact' type='checkbox' value='" + dataSet[i][0] + "'></div><div style='overflow:auto'><div><div class='showItemMenu' style='float:right'>&mldr;</div> " + dataSet[i][0] + "</div>");
 			    	if (dataSet[i][1].length > 0) {
 			    		if (!dataSet[i][1].toLowerCase().startsWith('http')) {
 			    			dataSet[i][1] = "http://" + dataSet[i][1]; // Since not all are https
