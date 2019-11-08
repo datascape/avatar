@@ -24,7 +24,7 @@ textarea {
 	right: 0px;
 }
 #topselectors {
-	float: left;
+	overflow: auto;
 	padding: 20px;
 }
 #topselectors div {
@@ -41,6 +41,15 @@ textarea {
 }
 #topselectors div.active {
 	border:1px solid #999;
+}
+
+@media (max-width: 768px) {
+	#topselectors div {
+		font-size: 12px;
+		padding: 4px 8px 4px 8px;
+		margin-left: 5px;
+		margin-bottom: 4px;
+	}
 }
 .padding-left {
 	padding-left: 20px;
