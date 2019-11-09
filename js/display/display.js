@@ -283,6 +283,11 @@ function displayRow(rowArray) {
 	//<div>" + rowArray[6] + "</div><div>" + rowArray[7] + "</div>
 }
 
+// For massive CSV files, try papaparse.
+// https://www.papaparse.com/docs#csv-to-json
+// https://code.tutsplus.com/tutorials/how-to-upload-and-download-csv-files-with-angularjs--cms-31489
+// Better yet, find a working example with a D3 marker cluster map.
+
 var overlays = {};
 var dataParameters = [];
 var dp = {};
