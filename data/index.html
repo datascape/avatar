@@ -105,6 +105,7 @@ body {
 
     
     <script>
+      // https://bl.ocks.org/HarryStevens/0ce529b9b5e4ea17f8db25324423818f
       // Event handlers
       $("#update-data-from-file").change(function(e){
         changeDataFromUpload(e, function(data){
@@ -147,13 +148,11 @@ body {
 
             reader.onload = function(event) {
               var csvData = event.target.result.replace(/^\s+|\s+$/g, ''); // Remove line breaks from start and end
-              var parsed = Papa.parse(csvData,{header: false});
-              console.log('test');
+              
+              localStorage.setItem("csvData",csvData);
 
-              //console.log(parsed);
-              //console.log(parsed[Object.keys(parsed)[0]][0]);
-              //console.log(parsed[Object.keys(parsed)[0]].shift());
-
+              // Header false prevents row objects containing column names
+              var parsed = Papa.parse(csvData,{header: false}); 
               let header = parsed[Object.keys(parsed)[0]][0];
               let rows = [parsed[Object.keys(parsed)[0]]].shift();
               rows.shift(); // Oddly, we need to trim first row off again.
@@ -162,9 +161,9 @@ body {
 				    data: rows
 				});
 				
-              //const datatable1 = new DataTable('#datatable1', parsed);
 
-              cb(csvToJson(parsed.data));
+              //cb(csvToJson(parsed.data));
+              //alert(localStorage.getItem("csvData"));
             };
             reader.onerror = function() {
               console.error("Unable to read " + file.fileName);
