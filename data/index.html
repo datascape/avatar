@@ -59,6 +59,8 @@ body {
 <body>
 
 <!-- create the container element -->
+<label class="button" id="saveToDatabase" style="background-color:red; float:right; display:none">Save</label>
+
 <div id="datatable"></div><br><br>
 <div class="file-upload-name" id="filename"></div>
 <div id="datatable1"></div><br><br>
@@ -80,18 +82,19 @@ body {
   });
 </script>
 
+<div style="clear:both; margin-bottom:15px">
+For your privacy, data will only reside in your browser while previewing.  A save button will appear.  It's not yet active.  
+</div>
 
     <div class="file-upload" style="float:left; margin-right:10px">
       <div class="file-upload-button">
         <input type="file" name="File Upload" id="update-data-from-file" accept=".csv" />
-        <label class="button" id="fileLabel" for="update-data-from-file">
-          Upload CSV
-        </label>
+        <label class="button" id="fileLabel" for="update-data-from-file">Open CSV in Browser</label>
       </div>
       
     </div>
 
-    <label id="showPasteField" class="button" style="float:left">
+    <label id="showPasteField" class="button" style="display:none; float:left; margin-right:10px">
     	Paste from spreadsheet
     </label>
 
@@ -130,9 +133,25 @@ body {
         $('#enter-data-field').val().replace( /\n/g, "^^^xyz" ).split( "^^^xyz" ).forEach(function(d){
           arr.push(d.replace( /\t/g, "^^^xyz" ).split( "^^^xyz" ))
         });
-        cb(csvToJson(arr));
+        //cb(csvToJson(arr));
+        showData(arr);
       }
 
+      function showData(csvData) {
+      	  localStorage.setItem("csvData",csvData);
+
+	      // Header false prevents row objects containing column names
+	      var parsed = Papa.parse(csvData,{header: false}); 
+	      let header = parsed[Object.keys(parsed)[0]][0];
+	      let rows = [parsed[Object.keys(parsed)[0]]].shift();
+	      rows.shift(); // Oddly, we need to trim first row off again.
+	      const datatable1 = new DataTable('#datatable1', {
+	      		columns: header,
+			    data: rows
+			});
+			
+	      $("#saveToDatabase").show();
+      }
       // Use the HTML5 File API to read the CSV
       function changeDataFromUpload(evt, cb){
         if (!browserSupportFileUpload()) {
@@ -161,7 +180,7 @@ body {
 				    data: rows
 				});
 				
-
+              $("#saveToDatabase").show();
               //cb(csvToJson(parsed.data));
               //alert(localStorage.getItem("csvData"));
             };
