@@ -63,7 +63,10 @@ $(document).ready( function() {
 		//var center = [33.7726, -84.3655]; var zoom = 19; // Ponce City Market
 
 		// Setting maxZoom: 19 here does not override layer maxZoom defaults.
-	    map = new L.Map( 'map', { zoomControl: false} ).setView( center, zoom );
+		// 	zoomControl: false,
+	    map = new L.Map( 'map', { 
+	    	scrollWheelZoom: false
+	    } ).setView( center, zoom );
 		//disabled zoomControl when initializing map (which is topleft by default)
 		//the add zoom control topright
 		L.control.zoom({

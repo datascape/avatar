@@ -147,7 +147,7 @@ function displayResults() {
       	if (i > 0) { // BUGBUG Skip the header row
       		//if (entry[0] > (startRange*100) && entry[0] < (endRange*100+99)) {
 
-      		if (foundMatch > 0) { // keyword match.  Not product match.
+      		if (foundMatch > 0) { // keyword match.  Not product match. // && dataSet[i][4] == "GA"
       			dataMatchCount++;
       			//console.log("foundMatch: " + i + " column 0: " + dataSet[i][0]);
 		    	//console.log(entry[0]);
@@ -294,8 +294,10 @@ var dp = {};
 var layerControl = false;
 var dataSet = []; // This will be eliminated
 function loadHtmlTable(applyFilter) {
+	//var csvdata = "data/locations-final-cleaned.csv";
+	var csvdata = "data/toy.csv";
 	//d3.text("exporters/export.csv", function(data) {
-	d3.text("data/toy.csv").then(function(data) {
+	d3.text(csvdata).then(function(data) {
       //dataSet = d3.csv.parseRows(data);
       dataSet = d3.csvParseRows(data);
       var listHeader = [];
@@ -440,7 +442,7 @@ function displayListX() {
 
 	$("#dataList").html("");
 	for(var i = 0; i < dataSet.length; i++) {
-      	if (i > 2) {
+      	if (i > 2) { // && dataSet[i][3] == "GA"
       		//if (entry[0] > (startRange*100) && entry[0] < (endRange*100+99)) {
 		    	matchCount++;
 		    	// <input name='contact' type='checkbox' value='" + dataSet[i][0] + "'> 

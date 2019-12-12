@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Avatar - Office Map</title>
+<title>Avatar - Office Maps</title>
 <link rel="icon" type="image/x-icon" href="img/logo/favicon.png" />
 
 	<!--
@@ -93,6 +93,8 @@
 
 <body>
 
+
+
 <div class="marker-menu-fixed">
 </div>
 
@@ -100,7 +102,7 @@
 </div>
 
 <div style="overflow: auto;">
-	<div id="topnav">
+	<div id="topnav" style="display:none">
         
 
         <div style="float:right">
@@ -113,7 +115,7 @@
             </div>
         </div>
         <div id="topselectors" class="padding-left">
-            <h1 style="float:left; margin-right:10px">Office Map</h1>
+            <h1 style="float:left; margin-right:10px">Office Maps</h1>
             <div>Tech Square</div>
             <div>Ponce</div>
             <div>Colorado</div>
@@ -123,18 +125,16 @@
         </div>
 
     </div>
-    <div style="height:70px"></div>
+    <div style="height:30px"></div><!-- 70px -->
 
     <div id="appmenu" class="padding-left" style="display:none">
         <div style="float:right">       
             <i class="material-icons hideAppMenu">close</i>
         </div>
-        <b>Welcome</b>  
-        You are viewing a demo app created by Loren Heyns 
-        to visualize individuals by their office locations.
+        <b>Welcome</b>
     </div>
 
-    <div id="flexwrapper">
+    <div id="flexwrapper" style="display:none">
     	
         <div class="marker-menu">
     
@@ -169,7 +169,9 @@
             <div id="grouplisttop_space"></div>
             <div id="grouplist" ></div>
         </div>
-    	<div id="map"></div>
+    	
+        <div id="map"></div>
+
     </div>
 
     
@@ -211,10 +213,10 @@
 
 <div class="sectionContent">
 
-<div style="margin-top:8px">
+<div style="display:none;margin-top:8px">
     <img class="draggable-marker" style="float:left; margin-right:5px; margin-top:-6px" src="img/marker-icon.png" alt="marker" />
     
-    <h1 style="float:left; margin-right:10px;">Logistics Partners</h1>
+    <h1 style="float:left; margin-right:10px;">Directory</h1>
 </div>
 
 <div style="clear:both"></div>
@@ -230,7 +232,7 @@
 
 <div id="mainCats" class="menu">
 
-    <div id="hideCatPanel" style="position:absolute;right:5px;top:8px;color:#777;cursor:pointer;padding-right:10px;z-index:10;">&#10005;</div>
+    <div id="hideCatPanel" style="position:absolute;right:5px;top:8px;color:#aaa;cursor:pointer;padding-right:10px;z-index:10;">&#10005;</div>
 
 
     <!-- left column title -->
@@ -675,13 +677,17 @@
     <div style="position:relative;">
         <div style="display:none">
         <div id="itemMenu" class="filterBubble">
+            <!--
             <div>View Details</div>
+            <div id='showLocalNews'>Local News</div>
             <div>Supply Chain</div>
             <div>Industry Map</div>
             <div>Add to Contacts</div>
-            <div>Submit Updates</div>
+            
             <hr>
-            <div id='showLocalNews'>Local News</div>
+            -->
+            <div>Edit Listing</div>
+            <div>Show Edit History</div>
         </div>
         </div>
 
@@ -989,6 +995,8 @@ $(document).ready(function () {
 
 <script src="js/display/display-lower.js"></script>
 <script src="js/leaflet/Leaflet.ImageOverlay.Rotated.js"></script>
+
+
 </body>
 
 </html>

@@ -3,8 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Avatar - Office Map</title>
+<title>Avatar - Data Table</title>
 <link rel="icon" type="image/x-icon" href="../img/logo/favicon.png" />
+
+<!--
+	https://frappe.io/datatable
+-->
 
 <!-- include styles for datatable -->
 <link href="https://unpkg.com/frappe-datatable@0.0.5/dist/frappe-datatable.min.css" rel="stylesheet">
@@ -109,7 +113,7 @@ For your privacy, data will only reside in your browser while previewing.  A sav
     
     <script>
       // https://bl.ocks.org/HarryStevens/0ce529b9b5e4ea17f8db25324423818f
-      // Event handlers
+      // Upload CSV - Event handlers
       $("#update-data-from-file").change(function(e){
         changeDataFromUpload(e, function(data){
 
