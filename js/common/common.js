@@ -28,6 +28,7 @@ function loadParams(paramStr,hashStr) {
 var param = loadParams(location.search,location.hash);
 
 function loadMarkupPage(pagePath, divID, target) {
+  alert('loadMarkupPage')
   d3.text(pagePath).then(function(data) {
     var converter = new showdown.Converter({tables:true}),
     html = converter.makeHtml(data);

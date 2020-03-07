@@ -266,11 +266,9 @@ $(document).ready( function() {
 	});
 
 	var location = {
-		Tech_Square: [33.77734, -84.3890],
-		Ponce: [33.77279539985879, -84.36538422550765],
-		Colorado: [40.525180, -105.026200],
-		Virginia: [38.9544, -77.4283],
-		Kansas: [37.719129880501434, -97.26137264626136],
+		Tech_Square: [33.77730067488403, -84.38979777856733],
+		Ponce_Market: [33.77279539985879, -84.36538422550765],
+		Hulsey_Yard: [33.7534, -84.3604],
 	}
 	$('#topselectors div').click(function(event) {
 		$('#topselectors div').removeClass('active');
@@ -280,10 +278,12 @@ $(document).ready( function() {
 		if (loctext == '+') {
 			alert('Click the map to send a lat/lon value to the browser console.\rAdd the lat/lon value to the location object in script.js.');
 			return;
-		} else if (loctext == 'Ponce') {
-			map.flyTo(center, 19); // Increase this to 19 after setting other baselayers to jump back to closest available tiles when changing base layers, otherwise no tiles as closest level.
+		} else if (loctext == 'Hulsey_Yard') {
+			map.flyTo(center, 16); // Wider
+		} else if (loctext == 'Ponce_Market') {
+			map.flyTo(center, 18); // Increase this to 19 after setting other baselayers to jump back to closest available tiles when changing base layers, otherwise no tiles at closest level.
 		} else {
-	    	map.flyTo(center, 18);
+	    	map.flyTo(center, 18); // 19 is too close for most map tile backgrounds
 		}
 	    // Works, but no rotation since only two points
 		//var upperleft = [33.7726, -84.3655];
